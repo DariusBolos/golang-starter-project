@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/htmx.org@2.0.3" integrity="sha384-0895/pl2MU10Hqc6jd4RvrthNlDiE9U1tWmX7WRESftEDRosgxNsQG/Ze9YMRzHq" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="main-container">
+        <h1>Upload an image or a video</h1>
+        <form id="upload-form" hx-post="/upload" hx-encoding="multipart/form-data">
+            <label>
+                Filename:
+                <input type="text" name="filename" required>
+            </label>
+            <label>
+                Description:
+                <input type="text" name="description">
+            </label>
+            <input type="file" id="file" name="file" accept="image/*, video/*" required>
+            <button type="submit">Upload</button>
+        </form>
+        <div class="file-container" hx-get="/files" hx-trigger="load"></div>
+    </div>
+</body>
+</html>
